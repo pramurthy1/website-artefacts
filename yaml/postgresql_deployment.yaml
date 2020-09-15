@@ -24,7 +24,7 @@ spec:
               containerPort: 5432
               protocol: TCP
           env:
-            - name: POSTGRES_DB
+            - name: POSTGRES_DB #container for PostgreSQL DB 
               value: db0
             - name: POSTGRES_USER
               value: postgres
@@ -33,13 +33,13 @@ spec:
           volumeMounts:
             - mountPath: "/var/lib/postgresql/data"
               name: "postgres-pgdata"
-        - name: postgres-exporter
+        - name: postgres-exporter #container for Prometheus Exporter for PostgreSQL
           image: bitnami/postgres-exporter
           ports:
            - name: pg-exporter
              containerPort: 9187
           command: ["/bin/sh", "-c"]
-        - name: postgreslog
+        - name: postgreslog #busybox container to forward application logs to stdout
           image: busybox
           args: [/bin/sh, -c, 'tail -n+1 -F /var/log/postgres.log']
           volumeMounts:
