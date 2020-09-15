@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-name: postgres_exporter
+name: postgres_exporter #service to provide access to postgreSQL DB on port 5432 and Prometheus exporter on port 9187
 labels:
 snappyflow/projectname: <yourprojectname>
 snappyflow/appname: <yourapplicationname>
